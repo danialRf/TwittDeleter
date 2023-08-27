@@ -7,8 +7,21 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        string[] neededInfo =
+        {
+            "CONSUMER_KEY", "CONSUMER_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET"
+        };
+        
+        for (int i = 0; i < neededInfo.Length; i++) 
+        { 
+            await Console.Out.WriteLineAsync( $"Enter your {neededInfo[i] }");
+            string answer = Console.ReadLine();
+            neededInfo[i] = answer;
+        }
+
+
         // Initialize Tweetinvi
-        var client = new TwitterClient("CONSUMER_KEY", "CONSUMER_SECRET", "ACCESS_TOKEN", "ACCESS_TOKEN_SECRET");
+        var client = new TwitterClient(neededInfo[0], neededInfo[1], neededInfo[2], neededInfo[3]);
 
         // Rate Limiting
         int deletedTweetsCount = 0;
