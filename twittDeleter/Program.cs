@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Tweetinvi;
 using Tweetinvi.Parameters;
@@ -44,8 +45,9 @@ class Program
                 {
                     break; // Stop if we reached the daily limit
                 }
-
-                if (tweet.Text.ToLower().Contains("hello"))
+                Console.WriteLine("write the keyword you want to delete the twitts which contains it");
+                string answer = Console.ReadLine() ;
+                if (tweet.Text.ToLower().Contains(answer))
                 {
                     await tweet.DestroyAsync();  // Corrected this line
                     deletedTweetsCount++;
